@@ -3,10 +3,9 @@ import time
 import itertools
 import threading
 
+from PyQt5.Qt import QApplication, QTreeWidgetItem, QMessageBox
 import PyQt5.QtCore as QtCore
-import PyQt5.QtGui as QtGui
 import PyQt5.uic as uic
-from PyQt5.QtWidgets import QApplication
 
 from collections import defaultdict
 from pkg_resources import resource_filename
@@ -126,7 +125,7 @@ class HerboristApp(QApplication):
         self.window.motor_tree.clear()
 
         for b, ids in baud_for_ids.items():
-            baud_root = QtGui.QTreeWidgetItem(self.window.motor_tree, [str(b)])
+            baud_root = QTreeWidgetItem(self.window.motor_tree, [str(b)])
             baud_root.setExpanded(True)
             f = int(baud_root.flags()) - int(QtCore.Qt.ItemIsSelectable)
             baud_root.setFlags(QtCore.Qt.ItemFlags(f))
@@ -136,7 +135,7 @@ class HerboristApp(QApplication):
             release_dxl_connection()
 
             for id, model in zip(ids, models):
-                QtGui.QTreeWidgetItem(baud_root, ['', str(id), model])
+                QTreeWidgetItem(baud_root, ['', str(id), model])
 
     def start_scanning(self):
         self.window.scan_button.setEnabled(False)
@@ -196,7 +195,7 @@ class HerboristApp(QApplication):
 
         def run(self):
             for b in self.baudrates:
-                baud_root = QtGui.QTreeWidgetItem(self.motor_tree, [str(b)])
+                baud_root = QTreeWidgetItem(self.motor_tree, [str(b)])
                 baud_root.setExpanded(True)
                 f = int(baud_root.flags()) - int(QtCore.Qt.ItemIsSelectable)
                 baud_root.setFlags(QtCore.Qt.ItemFlags(f))
@@ -209,7 +208,7 @@ class HerboristApp(QApplication):
 
                     if dxl_io.ping(id):
                         model = dxl_io.get_model((id, ))[0]
-                        QtGui.QTreeWidgetItem(baud_root, ['', str(id), model])
+                        QTreeWidgetItem(baud_root, ['', str(id), model])
 
                     self.part_done.emit(self.scan_progress.value() + 1)
 
@@ -345,7 +344,7 @@ class HerboristApp(QApplication):
                 new_ids[b] = l
 
             except ValueError:
-                QtGui.QMessageBox.about(self.window,
+                QMessageBox.about(self.window,
                                               '',
                                               'This id is already used.')
                 pass

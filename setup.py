@@ -19,9 +19,8 @@ if sys.version_info >= (3,):
 
 install_requires = ['numpy',
                     'pyserial>2.6',
-                    'tornado',
-                    'scipy',
                     'pyqt5',
+                    'pypot'
                     ]
 
 if sys.version_info < (3, 4):
@@ -67,8 +66,6 @@ setup(name='herborist',
       classifiers=[
           "Programming Language :: Python :: 3",
           "Topic :: Scientific/Engineering", ],
-
-      #data_files=package_files("pypot/snap/"),
 
       **extra
       )
