@@ -38,7 +38,7 @@ def release_dxl_connection():
 class HerboristApp(QApplication):
     def __init__(self, argv):
         QApplication.__init__(self, argv)
-        self.window = uic.loadUi(resource_filename('pypot', '/tools/herborist/herborist.ui'))
+        self.window = uic.loadUi(resource_filename('herborist','herborist/heborist.ui'))
 
         self.enable_motor_view(False)
 
