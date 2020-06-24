@@ -34,7 +34,7 @@ setup(name='herborist',
       },
       entry_points={
           'console_scripts': [
-              'dxl-config = dxlconfig:main',
+              'dxl-config = pypot.tools.dxlconfig:main',
               'herborist = herborist.herborist:main',
           ]
       },
