@@ -11,8 +11,6 @@ def version():
     with open('herborist/_version.py') as f:
         return re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", f.read()).group(1)
 
-extra = {}
-
 install_requires = ['numpy', 'pyqt5', 'pypot']
 
 if sys.version_info < (3, 5):
@@ -36,20 +34,21 @@ setup(name='herborist',
       },
       entry_points={
           'console_scripts': [
-              'dxl-config = dxlconfig:main'
+              'dxl-config = dxlconfig:main',
+              'herborist = herborist.herborist:main',
           ]
       },
+      package_data={"herborist": ["herborist.ui"]},
       include_package_data=True,
       exclude_package_data={'': ['.gitignore']},
       zip_safe=False,
       author='See https://github.com/poppy-project/herborist/graphs/contributors',
-      author_email='pierre.rouanet@gmail.com',
-      description='Graphical tool to detcet and configure iDynamixel motors',
+      author_email='dev@poppy-station.org',
+      description='Graphical tool to detect and configure Dynamixel motors',
       long_description=open('README.md', encoding='utf-8').read(),
       url='https://github.com/poppy-project/herborist',
       license='GNU GENERAL PUBLIC LICENSE Version 3',
       classifiers=[
           "Programming Language :: Python :: 3",
           "Topic :: Scientific/Engineering", ],
-      **extra
       )
