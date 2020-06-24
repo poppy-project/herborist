@@ -11,3 +11,5 @@ More precisely, Herborist can be used to:
     Make motors move (e.g. to test the angle limits).
 
 You can directly launch herborist by running the herborist command in your terminal.
+
+![](/doc/img/herborist.png)
